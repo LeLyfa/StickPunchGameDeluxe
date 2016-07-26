@@ -1,0 +1,8 @@
+main: de.lelyfa.stgd.Main
+name: stickpunchgamedeluxe
+version: 1.0 beta
+
+commands:
+  setspawn:
+    aliases: ss
+  debug:
