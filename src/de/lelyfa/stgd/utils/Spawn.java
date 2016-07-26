@@ -52,9 +52,9 @@ public class Spawn {
     public static void initialConfig() {
 
         cfg.options().copyDefaults(true);
-        cfg.addDefault("Spawnlocation.x", 0);
-        cfg.addDefault("Spawnlocation.y", 60);
-        cfg.addDefault("Spawnlocation.z", 0);
+        cfg.addDefault("Spawnlocation.x", -53);
+        cfg.addDefault("Spawnlocation.y", 19);
+        cfg.addDefault("Spawnlocation.z", 124);
         cfg.addDefault("Spawnlocation.world", "world");
 
         try {
