@@ -29,7 +29,7 @@ public class Death implements Listener {
             Game.lastdamager.remove(p);
             Game.rankup(q);
         } else {
-            e.setDeathMessage(ChatColor.GRAY + p.getName() + ChatColor.DARK_GRAY + " ist gestorben.");
+            e.setDeathMessage(null);
         }
 
         Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, () -> {

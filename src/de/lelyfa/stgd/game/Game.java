@@ -47,18 +47,26 @@ public class Game {
         HashMap<Enchantment, Integer> level = new HashMap<>();
 
         int i = playerlevel.get(p);
-        if (i >= 0 && i < 10) {
-            p.getInventory().setItem(4, ItemBuilder.createItemStack(Material.STICK, ChatColor.RED + "Level " + lvl++));
-        } else if (i >= 10 && i < 25) {
-            level.put(Enchantment.KNOCKBACK, 1);
-            p.getInventory().setItem(4, ItemBuilder.createItemStack(Material.STICK, ChatColor.RED + "Level " + lvl++));
-        } else if (i >= 25 && i < 50) {
-            level.put(Enchantment.KNOCKBACK, 2);
+        if (i < 5) {
             p.getInventory().setItem(4, ItemBuilder.createItemStack(Material.STICK, ChatColor.RED + "Level " + lvl++));
         } else {
-            level.put(Enchantment.KNOCKBACK, 3);
-            p.getInventory().setItem(4, ItemBuilder.createItemStack(Material.STICK, ChatColor.RED + "Level " + lvl++));
+            int z = 0;
+            if (i >= 5) {
+                z++;
+            }
+            if (i >= 20) {
+                z++;
+            }
+            if (i >= 50) {
+                z++;
+            }
+
+            level.put(Enchantment.KNOCKBACK, z);
+            p.getInventory().setItem(4, ItemBuilder.createItemStack(Material.STICK, ChatColor.RED + "Level " + lvl++, level));
         }
+
+
+
     }
 
 }
