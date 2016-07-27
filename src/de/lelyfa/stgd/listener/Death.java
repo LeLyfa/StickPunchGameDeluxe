@@ -20,6 +20,7 @@ public class Death implements Listener {
 
     @EventHandler
     public void on(PlayerDeathEvent e) {
+
         Player p = e.getEntity();
         p.getInventory().clear();
         if (Game.lastdamager.get(p) != null) {

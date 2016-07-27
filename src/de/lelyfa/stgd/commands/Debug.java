@@ -11,8 +11,9 @@ public class Debug implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
-        if(commandSender.isOp()){
-            if(debugmoede){
+        if (commandSender.isOp()) {
+
+            if (debugmoede) {
                 debugmoede = false;
                 commandSender.sendMessage(ChatColor.AQUA + "Der Debugmodus ist nun ausgeschalten!");
             } else {

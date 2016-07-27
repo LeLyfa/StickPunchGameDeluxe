@@ -12,11 +12,10 @@ public class Setspawn implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player && commandSender.isOp()) {
-            Player p = (Player) commandSender;
 
+            Player p = (Player) commandSender;
             Spawn.setSpawn(p.getLocation());
             p.sendMessage(ChatColor.GOLD + "Spawn wurde gesetzt!");
-
         }
         return false;
     }

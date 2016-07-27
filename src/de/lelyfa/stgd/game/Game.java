@@ -26,7 +26,6 @@ public class Game {
     public static void rankdown(Player p) {
 
         if (playerlevel.get(p) != 0) {
-            //int i = playerlevel.get(p);
             playerlevel.put(p, 0);
             Bukkit.broadcastMessage(ChatColor.RED + p.getName() + ChatColor.DARK_GRAY + " ist nun ein Level zero");
             givePlayerNewStick(p);
@@ -51,22 +50,13 @@ public class Game {
             p.getInventory().setItem(4, ItemBuilder.createItemStack(Material.STICK, ChatColor.RED + "Level " + lvl++));
         } else {
             int z = 0;
-            if (i >= 5) {
-                z++;
-            }
-            if (i >= 20) {
-                z++;
-            }
-            if (i >= 50) {
-                z++;
-            }
+            if (i >= 5) { z++; }
+            if (i >= 20) { z++; }
+            if (i >= 50) { z++; }
 
             level.put(Enchantment.KNOCKBACK, z);
             p.getInventory().setItem(4, ItemBuilder.createItemStack(Material.STICK, ChatColor.RED + "Level " + lvl++, level));
         }
-
-
-
     }
 
 }

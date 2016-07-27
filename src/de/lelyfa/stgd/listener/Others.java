@@ -7,20 +7,21 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerPickupItemEvent;
+import org.bukkit.event.weather.WeatherChangeEvent;
 
 public class Others implements Listener {
 
 
     @EventHandler
     public void on(PlayerDropItemEvent e) {
-        if(!Debug.debugmoede) {
+        if (!Debug.debugmoede) {
             e.setCancelled(true);
         }
     }
 
     @EventHandler
     public void on(PlayerPickupItemEvent e) {
-        if(!Debug.debugmoede) {
+        if (!Debug.debugmoede) {
             e.setCancelled(true);
         }
     }
@@ -32,9 +33,12 @@ public class Others implements Listener {
 
     @EventHandler
     public void on(BlockBreakEvent e) {
-        if(!Debug.debugmoede) {
+        if (!Debug.debugmoede) {
             e.setCancelled(true);
         }
     }
+
+    @EventHandler
+    public void on(WeatherChangeEvent e) { e.setCancelled(true); }
 
 }
