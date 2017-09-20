@@ -1,6 +1,7 @@
 package de.lelyfa.stgd.game;
 
 import de.lelyfa.stgd.utils.ItemBuilder;
+import de.lelyfa.stgd.utils.Spawn;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -21,13 +22,15 @@ public class Game {
         playerlevel.put(p, i++);
         Bukkit.broadcastMessage(ChatColor.GREEN + p.getName() + ChatColor.DARK_GRAY + " ist nun ein Level höher");
         givePlayerNewStick(p);
+        teleportPlayerToDesiredDestination(p);
+
     }
 
     public static void rankdown(Player p) {
 
         if (playerlevel.get(p) != 0) {
-            playerlevel.put(p, 0);
-            Bukkit.broadcastMessage(ChatColor.RED + p.getName() + ChatColor.DARK_GRAY + " ist nun ein Level zero");
+            playerlevel.put(p, playerlevel.get(p) - 1);
+            Bukkit.broadcastMessage(ChatColor.RED + p.getName() + ChatColor.DARK_GRAY + " ist nun ein Level tiefer");
             givePlayerNewStick(p);
 
         }
@@ -46,16 +49,31 @@ public class Game {
         HashMap<Enchantment, Integer> level = new HashMap<>();
 
         int i = playerlevel.get(p);
-        if (i < 5) {
-            p.getInventory().setItem(4, ItemBuilder.createItemStack(Material.STICK, ChatColor.RED + "Level " + lvl++));
-        } else {
-            int z = 0;
-            if (i >= 5) { z++; }
-            if (i >= 20) { z++; }
-            if (i >= 50) { z++; }
+        int z = 1;
+        if (i >= 3) {
+            z++;
+        }
+        if (i >= 10) {
+            z++;
+        }
+        if (i >= 25) {
+            z++;
+        }
 
-            level.put(Enchantment.KNOCKBACK, z);
-            p.getInventory().setItem(4, ItemBuilder.createItemStack(Material.STICK, ChatColor.RED + "Level " + lvl++, level));
+        level.put(Enchantment.KNOCKBACK, z);
+        p.getInventory().setItem(4, ItemBuilder.createItemStack(Material.STICK, ChatColor.RED + "Level " + lvl++, level));
+
+    }
+
+    public static void teleportPlayerToDesiredDestination(Player p) {
+        if (Game.playerlevel.get(p) > 2) {
+            Spawn.teleportPlayertoLevel(p, "zwei");
+        } else if (Game.playerlevel.get(p) > 9) {
+            Spawn.teleportPlayertoLevel(p, "drei");
+        } else if (Game.playerlevel.get(p) > 24) {
+            Spawn.teleportPlayertoLevel(p, "vier");
+        } else {
+            Spawn.teleportPlayertoSpawn(p);
         }
     }
 

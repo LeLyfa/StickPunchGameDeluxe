@@ -1,6 +1,7 @@
 package de.lelyfa.stgd;
 
 import de.lelyfa.stgd.commands.Debug;
+import de.lelyfa.stgd.commands.Setrank;
 import de.lelyfa.stgd.commands.Setspawn;
 import de.lelyfa.stgd.listener.*;
 import de.lelyfa.stgd.utils.Spawn;
@@ -11,6 +12,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
     @Override
+
+
     public void onEnable() {
         initial();
         loadListener();
@@ -27,6 +30,7 @@ public class Main extends JavaPlugin {
     private void loadCommands() {
         getCommand("setspawn").setExecutor(new Setspawn());
         getCommand("debug").setExecutor(new Debug());
+        getCommand("setrank").setExecutor(new Setrank());
     }
 
     private void loadListener() {

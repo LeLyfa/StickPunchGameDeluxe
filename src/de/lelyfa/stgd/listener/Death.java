@@ -2,12 +2,13 @@ package de.lelyfa.stgd.listener;
 
 import de.lelyfa.stgd.Main;
 import de.lelyfa.stgd.game.Game;
-import de.lelyfa.stgd.utils.Spawn;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.EnderDragon;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
 public class Death implements Listener {
@@ -22,7 +23,7 @@ public class Death implements Listener {
     public void on(PlayerDeathEvent e) {
 
         Player p = e.getEntity();
-        p.getInventory().clear();
+        e.getDrops().clear();
         if (Game.lastdamager.get(p) != null) {
             Player q = Game.lastdamager.get(p);
             e.setDeathMessage(ChatColor.GRAY + p.getName() + ChatColor.DARK_GRAY + " wurde von " + ChatColor.GRAY
@@ -38,7 +39,16 @@ public class Death implements Listener {
             p.getInventory().clear();
             Game.rankdown(p);
             Game.givePlayerNewStick(p);
-            Spawn.teleportPlayertoSpawn(p);
+            Game.teleportPlayerToDesiredDestination(p);
+
+
         }, 3);
+    }
+
+    @EventHandler
+    public void on(EntityDeathEvent e) {
+        if (e.getEntity() instanceof Player || e.getEntity() instanceof EnderDragon) {
+            e.getDrops().clear();
+        }
     }
 }

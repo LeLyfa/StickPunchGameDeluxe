@@ -14,7 +14,7 @@ public class Setspawn implements CommandExecutor {
         if (commandSender instanceof Player && commandSender.isOp()) {
 
             Player p = (Player) commandSender;
-            Spawn.setSpawn(p.getLocation());
+            Spawn.setSpawn(p.getLocation(), strings[0]);
             p.sendMessage(ChatColor.GOLD + "Spawn wurde gesetzt!");
         }
         return false;

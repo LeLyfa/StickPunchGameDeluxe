@@ -39,6 +39,8 @@ public class Others implements Listener {
     }
 
     @EventHandler
-    public void on(WeatherChangeEvent e) { e.setCancelled(true); }
+    public void on(WeatherChangeEvent e) {
+        e.setCancelled(true);
+    }
 
 }
